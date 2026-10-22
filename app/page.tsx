@@ -330,7 +330,7 @@ export default function Home() {
                   <h3 id="preview-title">{preview.project.name}</h3>
                 </div>
                 <p className="preview-count">{String(preview.index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}</p>
-                <button type="button" className="preview-close" onClick={closePreview} aria-label="Fermer la galerie">Fermer</button>
+                <button type="button" className="preview-close" onClick={closePreview} aria-label="Fermer la galerie">×</button>
               </header>
               <div className="preview-frame">
                 {total > 1 ? <button type="button" className="preview-nav preview-nav-prev" onClick={() => shiftPreview(-1)} aria-label="Capture précédente">←</button> : null}

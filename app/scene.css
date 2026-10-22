@@ -67,3 +67,10 @@ button.text-link{background:none;border:0;color:inherit;padding:0 0 8px;cursor:p
  .preview-thumbs{grid-template-columns:repeat(auto-fit,minmax(76px,1fr))}
  .preview-thumbs img{height:58px}
 }
+
+/* Keep the close control as a compact circular icon on every viewport. */
+.preview-head{position:fixed;top:14px;right:16px;width:50px;height:50px;display:block;margin:0;pointer-events:none}
+.preview-close{position:absolute;top:0;right:0;width:50px;height:50px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;font:32px/1 Arial,sans-serif;letter-spacing:0;pointer-events:auto;cursor:pointer}
+.preview-close:hover{background:rgba(255,255,255,.34)}
+.preview-frame{margin-top:0}
+@media(max-width:760px){.preview-head{top:10px;right:12px;width:44px;height:44px}.preview-close{width:44px;height:44px;font-size:29px}}
