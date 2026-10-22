@@ -74,3 +74,16 @@ button.text-link{background:none;border:0;color:inherit;padding:0 0 8px;cursor:p
 .preview-close:hover{background:rgba(255,255,255,.34)}
 .preview-frame{margin-top:0}
 @media(max-width:760px){.preview-head{top:10px;right:12px;width:44px;height:44px}.preview-close{width:44px;height:44px;font-size:29px}}
+
+/* Project preview images: fill their frame cleanly and make live-site cards feel clickable. */
+.project-visual{overflow:hidden!important;border-radius:12px;cursor:pointer}
+.project-visual img{object-fit:cover!important;object-position:center!important;background:#f2f1f8;transition:transform .35s ease}
+.project-visual:hover img{transform:scale(1.025)}
+.preview-frame{background:rgba(255,255,255,.04)}
+.preview-frame img{object-fit:contain;background:transparent}
+
+/* The captured screenshots have different aspect ratios. Let each frame follow
+   its own image dimensions so there is no artificial empty strip beside it. */
+.preview-frame{width:min(100%,1500px);height:auto;aspect-ratio:auto;background:var(--capture-background,#f4f3f8);border-radius:16px}
+.preview-frame img{position:relative!important;width:100%!important;height:auto!important;max-height:calc(100svh - 230px);object-fit:contain!important;object-position:center;display:block}
+@media(max-width:760px){.preview-frame{height:auto;aspect-ratio:auto}.preview-frame img{max-height:calc(100svh - 260px)}}

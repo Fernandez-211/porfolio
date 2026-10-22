@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { FormEvent, useEffect, useRef, useState } from "react";
 
-type Capture = { src: string; title: string; text: string };
+type Capture = { src: string; title: string; text: string; background?: string };
 type Project = {
   number: string;
   name: string;
@@ -282,6 +282,10 @@ export default function Home() {
               <button type="button" className="project-visual" onClick={() => openPreview(project)} aria-label={`Voir les interfaces de ${project.name}`}>
                 <Image src={project.image} alt={`Aperçu du projet ${project.name}`} fill sizes="(max-width: 760px) 80vw, 38vw" />
               </button>
+            ) : project.href.startsWith("http") ? (
+              <a className="project-visual" href={project.href} target="_blank" rel="noreferrer" aria-label={`Visiter le site ${project.name}`}>
+                <Image src={project.image} alt={`Aperçu du site ${project.name}`} fill sizes="(max-width: 760px) 80vw, 38vw" />
+              </a>
             ) : (
               <div className="project-visual"><Image src={project.image} alt={`Aperçu du projet ${project.name}`} fill sizes="(max-width: 760px) 80vw, 38vw" /></div>
             )}
@@ -332,7 +336,7 @@ export default function Home() {
                 <p className="preview-count">{String(preview.index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}</p>
                 <button type="button" className="preview-close" onClick={closePreview} aria-label="Fermer la galerie">×</button>
               </header>
-              <div className="preview-frame">
+              <div className="preview-frame" style={{ "--capture-background": capture.background ?? "#f4f3f8" } as React.CSSProperties}>
                 {total > 1 ? <button type="button" className="preview-nav preview-nav-prev" onClick={() => shiftPreview(-1)} aria-label="Capture précédente">←</button> : null}
                 <Image src={capture.src} alt={capture.title} width={1600} height={900} />
                 {total > 1 ? <button type="button" className="preview-nav preview-nav-next" onClick={() => shiftPreview(1)} aria-label="Capture suivante">→</button> : null}
